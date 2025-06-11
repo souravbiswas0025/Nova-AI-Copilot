@@ -1,0 +1,32 @@
+workflows:
+  android-build:
+    name: Nova AI APK Build
+    max_build_duration: 45
+
+    environment:
+      vars:
+        GRADLEW_PATH: "./gradlew"
+        APK_PATH: "app/build/outputs/apk/release/app-release.apk"
+        BUNDLE_APP: "app/build/outputs/bundle/release/app-release.aab"
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "main"
+          include: true
+
+    scripts:
+      - echo "Starting Nova AI build..."
+      - chmod +x $GRADLEW_PATH
+      - ./gradlew clean
+      - ./gradlew assembleRelease
+
+    artifacts:
+      - $APK_PATH
+      - $BUNDLE_APP
+
+    publishing:
+      email:
+        recipients:
+          - "your-email@example.com"

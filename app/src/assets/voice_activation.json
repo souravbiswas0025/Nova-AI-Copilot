@@ -1,0 +1,9 @@
+{
+    "wake_words": ["Hey Nova", "Hello Nova", "Nova, are you there?"],
+    "actions": {
+        "search_web": ["search", "find", "look up"],
+        "open_app": ["open", "launch"],
+        "email_read": ["read email", "email"],
+        "calendar_events": ["calendar", "schedule"]
+    }
+}
